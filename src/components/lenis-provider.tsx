@@ -14,8 +14,10 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
 
     // RequestAnimationFrame loop
     function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      if (lenis) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
     }
 
     requestAnimationFrame(raf);
